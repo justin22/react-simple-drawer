@@ -4,7 +4,7 @@
   "description": "Simple React drawer",
   "author": "georgejustin22",
   "license": "MIT",
-  "repository": "georgejustin22/react-simple-drawer",
+  "repository": "justin22/react-simple-drawer",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -47,7 +47,9 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1"
   },
+  "style": "src/styles.scss",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ]
 }
