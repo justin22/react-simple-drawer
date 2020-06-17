@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Drawer } from 'react-simple-drawer'
+import Drawer from 'react-simple-drawer'
 import 'react-simple-drawer/dist/index.css'
 
 const placements = ['left', 'right', 'bottom', 'top']
 
 const App = () => {
 
-  const [ placement, setPlacememt ] = useState('right')
+  const [placement, setPlacememt] = useState('right')
   return (
     <div
       style={{
@@ -22,20 +22,21 @@ const App = () => {
         {
           placements.map((value) => {
             return (
-              <button key={value} onClick={()=> setPlacememt(value)}>
-                { value }
+              <button key={value} onClick={() => setPlacememt(value)}>
+                {value}
               </button>
             )
           })
         }
       </div>
-      <Drawer 
+      <Drawer
         cta={
-          <button> open drawer on { placement } </button>
+          <button> open drawer on {placement} </button>
         }
         maskable={true}
         placement={placement}
         open={false}
+        closeOnMaskClick={true}
       >
         <p>
           Lorem Ipssum

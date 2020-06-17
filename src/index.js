@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.css'
 
 class Drawer extends React.Component {
@@ -10,7 +11,7 @@ class Drawer extends React.Component {
   }
 
   toggleDrawer = () => {
-    if (!this.state.open) {
+    if (!this.state.open && this.props.closeOnMaskClick) {
       // Add event listener to listen for clicks to determine if click occured outside the component or not
       document.addEventListener('click', this.handleOutsideClick, false);
     } else {
@@ -30,25 +31,25 @@ class Drawer extends React.Component {
     this.toggleDrawer();
   }
   render() {
-    
-    const { placement } = this.props ?? 'right'
-    const { maskable } = this.props;
+
+    const { placement, maskable } = this.props;
+
     return (
       <React.Fragment>
         <section onClick={this.toggleDrawer}>
-          { this.props.cta }
+          {this.props.cta}
         </section>
-        <div 
+        <div
           className={`drawer ${placement} ${this.state.open ? 'open' : ''}`}
         >
-          { maskable && <div className="drawer-mask" /> }
-          
+          {maskable && <div className="drawer-mask" />}
+
           <div className="drawer-content"
             ref={node => {
               this.node = node;
             }}
           >
-            { this.props.children }
+            {this.props.children}
           </div>
         </div>
       </React.Fragment>
@@ -56,4 +57,19 @@ class Drawer extends React.Component {
   }
 }
 
-export { Drawer };
+Drawer.defaultProps = {
+  closeOnMaskClick: true,
+  maskable: true,
+  open: false,
+  placement: 'right'
+};
+
+Drawer.propTypes = {
+  closeOnMaskClick: PropTypes.bool,
+  cta: PropTypes.node.isRequired,
+  maskable: PropTypes.bool,
+  open: PropTypes.bool,
+  placement: PropTypes.string
+}
+
+export default Drawer;
