@@ -12,3 +12,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.placement-btn {
+  background: #ececec;
+  margin: 5px;
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.placement-btn.active {
+  background: #333333;
+  color: #ffffff;
+}
+
+.open-drawer-button {
+  background: blueviolet;
+  margin: 5px;
+  color: #ffffff;
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 10px 20px;
+  border-color: blueviolet;
+  font-size: 20px;
+}

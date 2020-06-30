@@ -22,7 +22,11 @@ const App = () => {
         {
           placements.map((value) => {
             return (
-              <button key={value} onClick={() => setPlacememt(value)}>
+              <button 
+                key={value} 
+                onClick={() => setPlacememt(value)} 
+                className={`placement-btn ${placement === value ? 'active' : ''}`}
+              >
                 {value}
               </button>
             )
@@ -31,16 +35,17 @@ const App = () => {
       </div>
       <Drawer
         cta={
-          <button> open drawer on {placement} </button>
+          <button className="open-drawer-button"> open drawer on {placement} </button>
         }
         maskable={true}
         placement={placement}
         open={false}
         closeOnMaskClick={true}
+        closable={true}
+        closeIcon={<span> Close Drawer </span>}
       >
-        <p>
-          Lorem Ipssum
-        </p>
+        <h1>Drawer</h1>
+        <p> Simple react drawer </p>
       </Drawer>
     </div>
   )
