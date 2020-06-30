@@ -1,4 +1,4 @@
-import { Drawer } from '.'
+import Drawer  from '.'
 
 describe('Drawer', () => {
   it('is truthy', () => {

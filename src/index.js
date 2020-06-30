@@ -23,16 +23,36 @@ class Drawer extends React.Component {
       open: !this.state.open
     })
   }
-  //when clicked outside of the drawe, close the drawe
+
   handleOutsideClick = (e) => {
     if (this.node && this.node.contains(e.target)) {
       return;
     }
     this.toggleDrawer();
   }
+
+  renderCloseIcon() {
+    const { closable, closeIcon } = this.props;
+    return (
+      closable ?
+        <button
+          className="close-button"
+          onClick={this.toggleDrawer}
+        >
+          {
+            closeIcon ?
+              closeIcon
+              :
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" /></svg>
+          }
+        </button>
+        : ''
+    )
+  }
+
   render() {
 
-    const { placement, maskable } = this.props;
+    const { placement, maskable, children } = this.props;
 
     return (
       <React.Fragment>
@@ -49,7 +69,8 @@ class Drawer extends React.Component {
               this.node = node;
             }}
           >
-            {this.props.children}
+            {this.renderCloseIcon()}
+            {children}
           </div>
         </div>
       </React.Fragment>
@@ -61,7 +82,8 @@ Drawer.defaultProps = {
   closeOnMaskClick: true,
   maskable: true,
   open: false,
-  placement: 'right'
+  placement: 'right',
+  closable: false,
 };
 
 Drawer.propTypes = {
@@ -69,7 +91,9 @@ Drawer.propTypes = {
   cta: PropTypes.node.isRequired,
   maskable: PropTypes.bool,
   open: PropTypes.bool,
-  placement: PropTypes.string
+  placement: PropTypes.string,
+  closable: PropTypes.bool,
+  closeIcon: PropTypes.node
 }
 
 export default Drawer;

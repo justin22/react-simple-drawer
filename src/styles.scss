@@ -83,3 +83,10 @@
 .drawer.top.open .drawer-content{
 	height: 20vh;
 }
+
+.close-button {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background: transparent;
+}
