@@ -39,12 +39,13 @@ class Example extends Component {
 | props             | Description                                       | Type                      | Required | Default |
 |-------------------|---------------------------------------------------|---------------------------|----------|----------
 | `cta`             | To invoke the drawer (button, span etc..)         | ReactNode                 | Yes      | None    |
-| `closeOnMaskClick`| close the drawer by clicking mask area       | boolean                        | No       | true    |
+| `closeOnMaskClick`| close the drawer by clicking mask area            | boolean                   | No       | true    |
 | `maskable`        | show an overlay on the empty area outisde drawer  | boolean                   | No       | true    |
 | `open`            | drawer is visible or not                          | boolean                   | No       | false   |
 | `placement`       | place where drawer appears from                   | right, left, top, bottom  | No       | right   |
 | `closable`        | Display close icon on the drawer                  | boolean                   | No       | false   |
-| `closeIcon`       | custom close icon in drawer                       | node                      | No       | close svg   |
+| `closeIcon`       | custom close icon in drawer                       | node                      | No       | svg     |
+| `closeOnEscapePress`| Close drawer on `esc` key press                 | boolean                   | No       | true    |
 
 ## License
 

@@ -10,6 +10,11 @@ class Drawer extends React.Component {
     }
   }
 
+  handleEscapeKeyPress = (event) => {
+    if(event.keyCode === 27) //escape key code
+      this.toggleDrawer()
+  }
+
   toggleDrawer = () => {
     if (!this.state.open && this.props.closeOnMaskClick) {
       // Add event listener to listen for clicks to determine if click occured outside the component or not
@@ -29,6 +34,14 @@ class Drawer extends React.Component {
       return;
     }
     this.toggleDrawer();
+  }
+
+  componentDidMount() {
+    if(this.props.closeOnEscapePress)
+      document.addEventListener("keydown", this.handleEscapeKeyPress);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleEscapeKeyPress);
   }
 
   renderCloseIcon() {
@@ -84,6 +97,7 @@ Drawer.defaultProps = {
   open: false,
   placement: 'right',
   closable: false,
+  closeOnEscapePress: true
 };
 
 Drawer.propTypes = {
@@ -93,7 +107,8 @@ Drawer.propTypes = {
   open: PropTypes.bool,
   placement: PropTypes.string,
   closable: PropTypes.bool,
-  closeIcon: PropTypes.node
+  closeIcon: PropTypes.node,
+  closeOnEscapePress: PropTypes.bool
 }
 
 export default Drawer;
